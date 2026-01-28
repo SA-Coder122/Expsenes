@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <div class="login-header">
+                <i class="fas fa-chart-pie"></i>
+                <h2>ExpensePro</h2>
+                <p>Create Your Account</p>
+            </div>
+            <form onsubmit="register(event)">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="reg-username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="reg-pin" placeholder="PIN (4 digits)" maxlength="4" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirm-pin" placeholder="Confirm PIN" maxlength="4" required>
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+            <p class="login-footer">Already have an account? <a href="index.html">Login</a></p>
+        </div>
+    </div>
+   
+    <script src="js/app.js"></script>
+</body>
+</html>

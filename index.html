@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Main App -->
+    <div id="app" class="hidden">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-chart-pie"></i> ExpensePro</h1>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="transactions">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Transactions</span>
+                </a>
+                <a href="#" class="nav-item" data-page="reports">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="#" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span id="username-display">User</span>
+                    <button onclick="logout()" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h2 id="page-title">Dashboard</h2>
+                <div class="header-actions">
+                    <div class="currency-selector">
+                        <select id="currency-select">
+                            <option value="USD">USD ($)</option>
+                            <option value="GHS">GHS (₵)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="GBP">GBP (£)</option>
+                        </select>
+                    </div>
+                </div>
+            </header>
+
+            <div id="page-content">
+                <!-- Pages will be loaded here dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-container">
+        <div class="login-form">
+            <div class="login-header">
+                <i class="fas fa-chart-pie"></i>
+                <h2>ExpensePro</h2>
+                <p>Smart Expense Tracking</p>
+            </div>
+            <form onsubmit="login(event)">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="login-username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="login-pin" placeholder="PIN (4 digits)" maxlength="4" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            <p class="login-footer">Don't have an account? <a href="register.html">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Add Transaction Modal -->
+    <div id="transaction-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus"></i> Add Transaction</h3>
+                <button class="close-btn" onclick="hideModal()">&times;</button>
+            </div>
+            <form onsubmit="addTransaction(event)">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Type</label>
+                        <select id="type" required>
+                            <option value="">Select Type</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Category</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Description</label>
+                    <input type="text" id="description" placeholder="Enter description" required>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Amount</label>
+                        <input type="number" id="amount" placeholder="0.00" step="0.01" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-primary">Save Transaction</button>
+                    <button type="button" class="btn-secondary" onclick="hideModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
